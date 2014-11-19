@@ -233,13 +233,15 @@ bool SqliteReferenceModel::loadFromDB(QSqlDatabase & keep_db, QSqlDatabase & db)
 
         if (!path.startsWith(ResourcePath)) {        // not the resources path
             path = partsDir.absoluteFilePath(path);
+            /*
             if (QFileInfo(path).exists()) {
                 // assume this is a later version of the fzp so load it later via xml
                 CoreList << moduleID;
                 continue;
             }
 
-            // path.replace("/parts/", "/pdb/");
+            path.replace("/parts/", "/pdb/");
+            */
         }
 
 		ModelPart * modelPart = new ModelPart();
