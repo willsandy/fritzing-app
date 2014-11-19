@@ -166,14 +166,14 @@ void PaletteModel::loadParts(bool dbExists) {
     }
 
     int loadingPart = 0;
-    if (dir1 != NULL) {
-        loadPartsAux(*dir1, nameFilters, loadingPart, totalPartCount);
-        delete dir1;
-    }
 	loadPartsAux(dir2, nameFilters, loadingPart, totalPartCount);
 
     if (m_fullLoad || !dbExists) {
         // otherwise these will already be in the database
+        if (dir1 != NULL) {
+            loadPartsAux(*dir1, nameFilters, loadingPart, totalPartCount);
+            delete dir1;
+        }
 	    loadPartsAux(dir3, nameFilters, loadingPart, totalPartCount);  
     }
 
