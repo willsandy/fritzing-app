@@ -1425,7 +1425,7 @@ void MainWindow::exportSpiceNetlist() {
     if (output.contains(incl, Qt::CaseInsensitive)) {
         QStringList lines = output.split("\n");
         QList<QDir *> paths;
-        paths << FolderUtils::getApplicationSubFolder("pdb");
+        // paths << FolderUtils::getApplicationSubFolder("pdb");
         paths << FolderUtils::getApplicationSubFolder("parts");
         paths << new QDir(FolderUtils::getUserDataStorePath("parts"));
 

@@ -123,8 +123,8 @@ unix {
         parts.path = $$PKGDATADIR
         parts.files += parts
 
-        pdb.path = $$PKGDATADIR
-        pdb.files += pdb
+        #pdb.path = $$PKGDATADIR
+        #pdb.files += pdb
 
         help.path = $$PKGDATADIR
         help.files += help
@@ -141,7 +141,7 @@ unix {
         syntax.path = $$PKGDATADIR/translations/syntax
         syntax.files += translations/syntax/*.xml
 
-        INSTALLS += target desktop manpage icon parts sketches bins translations syntax pdb help
+        INSTALLS += target desktop manpage icon parts sketches bins translations syntax help
 }
 
 ICON = resources/images/fritzing_icon.icns

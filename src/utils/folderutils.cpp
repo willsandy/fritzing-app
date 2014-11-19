@@ -176,8 +176,8 @@ const QString FolderUtils::applicationDirPath() {
 					candidates.append(dir.absolutePath());
 				}
 			}
-		}
-		
+        }
+
 #ifdef PKGDATADIR
 		candidates.append(QLatin1String(PKGDATADIR));
 #else

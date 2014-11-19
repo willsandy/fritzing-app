@@ -227,7 +227,7 @@ QString PartFactory::getSvgFilename(ModelPart * modelPart, const QString & baseN
     QString pfPath = PartFactory::folderPath() + postfix;
 	if(!modelPart->path().isEmpty()) {
         QString path = modelPart->path();
-        path.replace("/pdb/", "/parts/");
+        // path.replace("/pdb/", "/parts/");
 		QDir dir(path);			// is a path to a filename
 		dir.cdUp();									// lop off the filename
 		dir.cdUp();									// parts root

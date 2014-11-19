@@ -239,7 +239,7 @@ bool SqliteReferenceModel::loadFromDB(QSqlDatabase & keep_db, QSqlDatabase & db)
                 continue;
             }
 
-            path.replace("/parts/", "/pdb/");
+            // path.replace("/parts/", "/pdb/");
         }
 
 		ModelPart * modelPart = new ModelPart();
@@ -494,7 +494,7 @@ bool SqliteReferenceModel::loadFromDB(QSqlDatabase & keep_db, QSqlDatabase & db)
             modelPart->initBuses();
             modelPart->setParent(m_root);
             modelPart->lookForZeroConnector();
-        }
+         }
     }
 
     return true;
@@ -864,11 +864,13 @@ bool SqliteReferenceModel::insertPart(ModelPart * modelPart, bool fullLoad) {
         if (path.startsWith(ResourcePath)) {
         }
         else if (path.startsWith(prefix)) {
+            /*
             // copy the fzp away so it's not consulted at normal load time
             QString newPath = path;
             newPath.replace("/parts/", "/pdb/");
             QFile::remove(newPath);
             QFile::rename(path, newPath);
+            */
             path = path.mid(prefix.count() + 1);  // + 1 to remove the beginning "/"
         }
         else {

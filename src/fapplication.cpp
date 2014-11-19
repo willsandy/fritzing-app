@@ -711,7 +711,11 @@ ReferenceModel * FApplication::loadReferenceModel(const QString & databaseName, 
         dbExists = info.exists();
     }
 
-	bool ok = m_referenceModel->loadAll(databaseName, fullLoad, dbExists);		// loads local parts, resource parts, and any other parts in files not in the db--these part override db parts with the same moduleID
+    /* loads local parts, resource parts, and any other parts in files not in the db
+     * --these parts override db parts with the same moduleID
+     */
+    bool ok = m_referenceModel->loadAll(databaseName, fullLoad, dbExists);
+
     if (ok && databaseName.isEmpty()) {
         if (dir == NULL) {
         }
@@ -873,15 +877,22 @@ void FApplication::runSvgServiceAux()
 	}
 }
 
+/*
+ *  Moves all .fzp file temporarily from /pdb into /parts folder and regenerates parts.db
+ */
 void FApplication::runDatabaseService()
 {
 	createUserDataStoreFolderStructure();
 
     DebugDialog::setEnabled(true);
+
+    /*
+    // get all part definitions from /pdb folder
     QDir * parent = FolderUtils::getApplicationSubFolder("pdb");
     QFileInfoList dirs = parent->entryInfoList(QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks);
     delete parent;
 
+    // move them into /parts folder
     QStringList nameFilters;
     nameFilters << ("*" + FritzingPartExtension);
     foreach (QFileInfo dirInfo, dirs) {
@@ -896,10 +907,12 @@ void FApplication::runDatabaseService()
             QFile::rename(path, newPath);
         }
     }
+    */
 
-
+    // regenerate parts.db (m_outputFolder is the full path to the .db file)
+    // included parts get moved back into the pdb folder
     QFile::remove(m_outputFolder);
-	loadReferenceModel(m_outputFolder, true);  // m_outputFolder is actually a full path ending in ".db"
+    loadReferenceModel(m_outputFolder, true);
 }
 
 void FApplication::runGedaService() {
