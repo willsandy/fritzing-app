@@ -39,6 +39,7 @@ $Date: 2013-02-26 16:26:03 +0100 (Di, 26. Feb 2013) $
 #include "programtab.h"
 #include "platformarduino.h"
 #include "platformpicaxe.h"
+#include "platformpk2cc5x.h"
 
 #include "../debugdialog.h"
 #include "../waitpushundostack.h"
@@ -717,7 +718,7 @@ void ProgramWindow::initPlatforms() {
     QDir dir(FolderUtils::getApplicationSubFolderPath("translations"));
     Highlighter::loadStyles(dir.absolutePath().append("/syntax/styles.xml"));
 
-    m_platforms << new PlatformArduino() << new PlatformPicaxe();
+    m_platforms << new PlatformArduino() << new PlatformPicaxe() << new PlatformPk2Cc5x();
 }
 
 QList<Platform *> ProgramWindow::getAvailablePlatforms() {

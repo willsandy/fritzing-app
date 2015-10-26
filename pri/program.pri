@@ -29,15 +29,16 @@ HEADERS += \
     src/program/programtab.h \
     src/program/programwindow.h \
     src/program/syntaxer.h \
-    src/program/trienode.h \ 
+    src/program/trienode.h \
     src/program/console.h \
     src/program/consolewindow.h \
     src/program/consolesettings.h \
     src/program/platform.h \
     src/program/platformarduino.h \
     src/program/platformpicaxe.h \
+    src/program/platformpk2cc5x.h \
     src/program/platformlaunchpad.h
- 
+
 SOURCES += \
     src/program/highlighter.cpp \
     src/program/programtab.cpp \
@@ -50,6 +51,7 @@ SOURCES += \
     src/program/platform.cpp \
     src/program/platformarduino.cpp \
     src/program/platformpicaxe.cpp \
+    src/program/platformpk2cc5x.cpp \
     src/program/platformlaunchpad.cpp
 
 FORMS += \
